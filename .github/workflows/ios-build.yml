@@ -1,0 +1,32 @@
+name: Compile iOS Test App
+on: [push]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Fetch Dependencies
+        run: flutter pub get
+
+      - name: Compile Unsigned iOS App
+        run: flutter build ios --config-only --no-codesign
+
+      - name: Zip Package Build
+        run: |
+          mkdir -p Payload
+          mv build/ios/iphoneos/Runner.app Payload/
+          zip -r AppPayload.ipa Payload
+
+      - name: Upload Finished Installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostic-ios-app
+          path: AppPayload.ipa
