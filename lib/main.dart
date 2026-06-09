@@ -29,23 +29,6 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Device Diagnostics Suite'),
-      ),
-      body: const Center(
-        child: Text(
-          'Ready to execute hardware tests.',
-          style: TextStyle(fontSize: 18),
-        ),
-      ),
-    );
-  }
-}
-
-class _DashboardPageState extends State<DashboardPage> {
   String statusMessage = "Ready to execute hardware tests.";
 
   void runHardwareCheck() {
