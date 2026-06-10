@@ -33,7 +33,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
   void runHardwareCheck() {
     setState(() {
-      statusMessage = "STORAGE CHECK: 256GB NVMe Detected\nSTATUS: PASS";
+      statusMessage = "CONTACT WITH APPLE'n WOEP WOEP";
     });
   }
 
